@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="gestion_evenements.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="1"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="5030"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><table title="utilisateur" custom_title="0" dock_id="1" table="4,11:mainutilisateur"/><dock_state state="000000ff00000000fd00000001000000020000043c000002b6fc0100000001fb000000160064006f0063006b00420072006f007700730065003101000000000000043c0000011e00ffffff0000025c0000000000000004000000040000000800000008fc00000000"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="_prisma_migrations" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="29"/><column index="2" value="63"/><column index="3" value="71"/><column index="5" value="31"/><column index="6" value="91"/><column index="7" value="66"/><column index="8" value="124"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="billet" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="29"/><column index="2" value="84"/><column index="3" value="33"/><column index="4" value="47"/><column index="5" value="30"/><column index="6" value="55"/><column index="7" value="48"/><column index="8" value="62"/><column index="9" value="66"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="logaudit" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="29"/><column index="2" value="79"/><column index="3" value="43"/><column index="4" value="41"/><column index="5" value="53"/><column index="6" value="62"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="profilutilisateur" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="29"/><column index="2" value="79"/><column index="3" value="93"/><column index="4" value="241"/><column index="5" value="257"/><column index="6" value="265"/><column index="7" value="156"/><column index="8" value="156"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="programmeevenement" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="29"/><column index="2" value="84"/><column index="3" value="270"/><column index="4" value="74"/><column index="5" value="57"/><column index="6" value="62"/><column index="7" value="66"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="utilisateur" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_" freeze_columns="0"><sort/><column_widths><column index="1" value="29"/><column index="2" value="109"/><column index="3" value="202"/><column index="4" value="300"/><column index="5" value="44"/><column index="6" value="156"/><column index="7" value="156"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1*">-- Dummy Data for SQLite Database
+-- Run this after creating the tables
+
+PRAGMA foreign_keys = ON;
+
+-- Insert more roles if needed
+INSERT INTO `role` (`nom`) VALUES
+('MODERATOR'),
+('SPONSOR');
+
+-- Insert more event categories
+INSERT INTO `categorieevenement` (`nom`) VALUES
+('WORKSHOP'),
+('EXHIBITION'),
+('NETWORKING'),
+('GALA'),
+('SEMINAR');
+
+-- Insert more ticket types
+INSERT INTO `typebillet` (`nom`) VALUES
+('PREMIUM'),
+('STANDARD'),
+('BUDGET'),
+('GROUP');
+
+-- Insert more payment providers
+INSERT INTO `prestatairepaiement` (`nom`) VALUES
+('CASH'),
+('CRYPTOCURRENCY'),
+('GIFT_CARD');
+
+-- Insert more event statuses
+INSERT INTO `statutevenement` (`nom`) VALUES
+('POSTPONED'),
+('SOLD_OUT');
+
+-- Insert more scan statuses
+INSERT INTO `statutscan` (`nom`) VALUES
+('EXPIRED'),
+('CANCELLED');
+
+-- Insert dummy users
+INSERT INTO `utilisateur` (`nom`, `email`, `motDePasse`, `roleId`) VALUES
+('John Doe', 'john.doe@example.com', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 3), -- USER
+('Jane Smith', 'jane.smith@example.com', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 2), -- ORGANIZER
+('Admin User', 'admin@example.com', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 1), -- ADMIN
+('Mike Johnson', 'mike.johnson@example.com', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 4), -- SCANNER
+('Sarah Wilson', 'sarah.wilson@example.com', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 3), -- USER
+('Tom Brown', 'tom.brown@example.com', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 2), -- ORGANIZER
+('Emily Davis', 'emily.davis@example.com', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 3), -- USER
+('Chris Miller', 'chris.miller@example.com', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 3), -- USER
+('Lisa Anderson', 'lisa.anderson@example.com', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 2), -- ORGANIZER
+('David Taylor', 'david.taylor@example.com', '$2a$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 3); -- USER
+
+-- Insert user profiles
+INSERT INTO `profilutilisateur` (`utilisateurId`, `telephone`, `adresse`, `avatarUrl`, `bio`) VALUES
+(1, '+1234567890', '123 Main St, New York, NY', 'https://example.com/avatar1.jpg', 'Music lover and event enthusiast'),
+(2, '+1234567891', '456 Oak Ave, Los Angeles, CA', 'https://example.com/avatar2.jpg', 'Professional event organizer'),
+(3, '+1234567892', '789 Pine Rd, Chicago, IL', 'https://example.com/avatar3.jpg', 'System administrator'),
+(4, '+1234567893', '321 Elm St, Houston, TX', 'https://example.com/avatar4.jpg', 'Event security and ticket scanner'),
+(5, '+1234567894', '654 Maple Dr, Phoenix, AZ', 'https://example.com/avatar5.jpg', 'Conference attendee'),
+(6, '+1234567895', '987 Cedar Ln, Philadelphia, PA', 'https://example.com/avatar6.jpg', 'Concert promoter'),
+(7, '+1234567896', '147 Birch Way, San Antonio, TX', 'https://example.com/avatar7.jpg', 'Art exhibition lover'),
+(8, '+1234567897', '258 Spruce St, San Diego, CA', 'https://example.com/avatar8.jpg', 'Sports fan'),
+(9, '+1234567898', '369 Willow Ave, Dallas, TX', 'https://example.com/avatar9.jpg', 'Corporate event planner'),
+(10, '+1234567899', '741 Aspen Blvd, San Jose, CA', 'https://example.com/avatar10.jpg', 'Tech conference attendee');
+
+-- Insert venues
+INSERT INTO `lieuevenement` (`nom`, `adresse`, `ville`, `pays`) VALUES
+('Madison Square Garden', '4 Pennsylvania Plaza, New York, NY 10001', 'New York', 'USA'),
+('Hollywood Bowl', '2301 N Highland Ave, Los Angeles, CA 90068', 'Los Angeles', 'USA'),
+('United Center', '1901 W Madison St, Chicago, IL 60612', 'Chicago', 'USA'),
+('Toyota Center', '1510 Smith St, Houston, TX 77002', 'Houston', 'USA'),
+('Talking Stick Resort Arena', '201 E Jefferson St, Phoenix, AZ 85004', 'Phoenix', 'USA'),
+('Wells Fargo Center', '3601 S Broad St, Philadelphia, PA 19148', 'Philadelphia', 'USA'),
+('AT&amp;T Center', '1 AT&amp;T Center Pkwy, San Antonio, TX 78219', 'San Antonio', 'USA'),
+('Chase Center', '1 Warriors Way, San Francisco, CA 94158', 'San Francisco', 'USA'),
+('American Airlines Center', '2500 Victory Ave, Dallas, TX 75219', 'Dallas', 'USA'),
+('SAP Center', '525 W Santa Clara St, San Jose, CA 95113', 'San Jose', 'USA');
+
+-- Insert events
+INSERT INTO `evenement` (`titre`, `description`, `dateDebut`, `dateFin`, `maxBillets`, `organisateurId`, `categorieId`, `lieuId`, `statutId`) VALUES
+('Summer Music Festival 2024', 'Annual summer music festival featuring top artists', '2024-07-15 18:00:00', '2024-07-15 23:00:00', 5000, 2, 1, 1, 2),
+('Tech Innovation Conference', 'Latest technology trends and innovations', '2024-09-20 09:00:00', '2024-09-20 18:00:00', 1000, 6, 2, 2, 2),
+('Championship Basketball Game', 'Finals match between top teams', '2024-12-01 19:30:00', '2024-12-01 22:00:00', 20000, 2, 3, 3, 2),
+('Broadway Musical Show', 'Spectacular musical performance', '2024-08-10 20:00:00', '2024-08-10 22:30:00', 1500, 9, 4, 4, 2),
+('Food &amp; Wine Festival', 'Culinary experience with renowned chefs', '2024-10-05 12:00:00', '2024-10-05 22:00:00', 3000, 6, 5, 5, 2),
+('Startup Pitch Day', 'Entrepreneurs present their ideas', '2024-11-15 14:00:00', '2024-11-15 18:00:00', 500, 9, 2, 6, 2),
+('Art Exhibition Opening', 'Modern art gallery opening night', '2024-09-01 19:00:00', '2024-09-01 21:00:00', 800, 2, 7, 7, 2),
+('Comedy Night Special', 'Stand-up comedy with famous comedians', '2024-08-25 20:00:00', '2024-08-25 22:00:00', 1200, 6, 1, 8, 2),
+('Corporate Gala Dinner', 'Annual corporate awards ceremony', '2024-12-15 19:00:00', '2024-12-15 23:00:00', 600, 9, 9, 9, 2),
+('Marketing Workshop', 'Digital marketing strategies workshop', '2024-10-20 09:00:00', '2024-10-20 17:00:00', 200, 6, 6, 10, 2);
+
+-- Insert tickets for events
+INSERT INTO `billet` (`nom`, `prix`, `quantite`, `evenementId`, `typeId`) VALUES
+('VIP Pass', 299.99, 100, 1, 1),
+('General Admission', 89.99, 2000, 1, 2),
+('Student Ticket', 49.99, 500, 1, 3),
+('Early Bird Special', 69.99, 300, 1, 4),
+('Premium Conference Pass', 599.99, 100, 2, 1),
+('Standard Conference', 299.99, 500, 2, 2),
+('Student Conference', 149.99, 200, 2, 3),
+('Group Package (5 people)', 999.99, 50, 2, 4),
+('Courtside Seat', 499.99, 200, 3, 1),
+('Lower Bowl', 199.99, 5000, 3, 2),
+('Upper Bowl', 89.99, 10000, 3, 3),
+('Student Section', 49.99, 2000, 3, 3),
+('Orchestra Seat', 249.99, 300, 4, 1),
+('Mezzanine', 149.99, 500, 4, 2),
+('Balcony', 79.99, 700, 4, 3),
+('VIP Tasting Package', 199.99, 200, 5, 1),
+('General Admission', 79.99, 1500, 5, 2),
+('Designated Driver', 39.99, 1000, 5, 3),
+('VIP Investor Pass', 199.99, 50, 6, 1),
+('General Attendee', 49.99, 300, 6, 2),
+('Student Entrepreneur', 29.99, 100, 6, 3),
+('Patron Ticket', 99.99, 100, 7, 1),
+('General Admission', 39.99, 500, 7, 2),
+('Student/Artist', 19.99, 200, 7, 3),
+('VIP Comedy Club', 89.99, 100, 8, 1),
+('General Seating', 49.99, 800, 8, 2),
+('Student Night', 29.99, 300, 8, 3),
+('VIP Table', 499.99, 20, 9, 1),
+('Individual Seat', 149.99, 400, 9, 2),
+('Corporate Group (10)', 999.99, 18, 9, 4),
+('Professional Workshop', 399.99, 50, 10, 1),
+('Standard Access', 199.99, 100, 10, 2),
+('Student Rate', 99.99, 50, 10, 3);
+
+-- Insert some ticket purchases
+INSERT INTO `achatbillet` (`billetId`, `acheteurId`, `codeUnique`, `utilise`) VALUES
+(1, 1, 'TICKET-1710000000000-ABC123XYZ', 0),
+(2, 1, 'TICKET-1710000000001-DEF456UVW', 0),
+(5, 5, 'TICKET-1710000000002-GHI789RST', 0),
+(6, 7, 'TICKET-1710000000003-JKL012OPQ', 0),
+(9, 8, 'TICKET-1710000000004-MNO345STU', 1),
+(10, 10, 'TICKET-1710000000005-PQR678VWX', 0),
+(13, 5, 'TICKET-1710000000006-STU901YZA', 0),
+(14, 7, 'TICKET-1710000000007-VWX234BCD', 0),
+(17, 8, 'TICKET-1710000000008-YZA567EFG', 0),
+(18, 1, 'TICKET-1710000000009-BCD890HIJ', 0),
+(21, 10, 'TICKET-1710000000010-EFG123KLM', 0),
+(22, 5, 'TICKET-1710000000011-HIJ456NOP', 0),
+(25, 7, 'TICKET-1710000000012-KLM789QRS', 0),
+(26, 8, 'TICKET-1710000000013-NOP012TUV', 0),
+(29, 1, 'TICKET-1710000000014-QRS345WXY', 0);
+
+-- Insert payments
+INSERT INTO `paiement` (`achatBilletId`, `prestataireId`, `evenementId`, `montant`, `reference`, `statut`) VALUES
+(1, 1, 1, 299.99, 'PAY-1710000000000-1', 'SUCCES'),
+(2, 1, 1, 89.99, 'PAY-1710000000001-2', 'SUCCES'),
+(3, 2, 2, 599.99, 'PAY-1710000000002-3', 'SUCCES'),
+(4, 2, 2, 299.99, 'PAY-1710000000003-4', 'SUCCES'),
+(5, 3, 3, 499.99, 'PAY-1710000000004-5', 'SUCCES'),
+(6, 3, 3, 199.99, 'PAY-1710000000005-6', 'EN_ATTENTE'),
+(7, 1, 4, 249.99, 'PAY-1710000000006-7', 'SUCCES'),
+(8, 1, 4, 149.99, 'PAY-1710000000007-8', 'SUCCES'),
+(9, 2, 5, 199.99, 'PAY-1710000000008-9', 'SUCCES'),
+(10, 2, 5, 79.99, 'PAY-1710000000009-10', 'SUCCES'),
+(11, 4, 6, 199.99, 'PAY-1710000000010-11', 'SUCCES'),
+(12, 4, 6, 49.99, 'PAY-1710000000011-12', 'SUCCES'),
+(13, 1, 7, 99.99, 'PAY-1710000000012-13', 'SUCCES'),
+(14, 1, 7, 39.99, 'PAY-1710000000013-14', 'SUCCES'),
+(15, 3, 8, 89.99, 'PAY-1710000000014-15', 'ECHEC');
+
+-- Insert messages between users
+INSERT INTO `message` (`expediteurId`, `destinataireId`, `contenu`) VALUES
+(1, 5, 'Hey! Are you attending the music festival?'),
+(5, 1, 'Yes! I got VIP tickets. Want to meet up?'),
+(1, 5, 'That would be awesome! I have general admission.'),
+(2, 6, 'The conference venue looks great this year.'),
+(6, 2, 'I agree! The speaker lineup is impressive.'),
+(7, 8, 'Want to go to the basketball game together?'),
+(8, 7, 'Sure! I can get us good seats.'),
+(3, 4, 'Please scan the tickets at entrance A.'),
+(4, 3, 'Will do. How many people are expected?'),
+(3, 4, 'Around 5000 for the music festival.'),
+(9, 10, 'The gala dinner planning is going well.'),
+(10, 9, 'Excellent! Let me know if you need help.'),
+(1, 7, 'Thanks for recommending the art exhibition!'),
+(7, 1, 'You''re welcome! It was amazing.'),
+(8, 10, 'Are you speaking at the marketing workshop?'),
+(10, 8, 'Yes! I''m presenting on social media strategies.');
+
+-- Insert notifications
+INSERT INTO `notification` (`utilisateurId`, `titre`, `message`, `lu`) VALUES
+(1, 'Event Reminder', 'Summer Music Festival starts tomorrow at 6 PM', 0),
+(1, 'Payment Confirmation', 'Your ticket purchase has been confirmed', 1),
+(5, 'New Message', 'You have a new message from John Doe', 0),
+(2, 'Event Update', 'Conference schedule has been updated', 0),
+(6, 'Ticket Available', 'VIP tickets are now available for the basketball game', 0),
+(7, 'Payment Failed', 'Your payment could not be processed', 0),
+(8, 'Event Canceled', 'The comedy night has been postponed', 0),
+(3, 'System Update', 'Database maintenance scheduled for tonight', 1),
+(4, 'Scan Report', '500 tickets scanned successfully today', 0),
+(9, 'Gala Reminder', 'Don''t forget about the corporate gala next week', 0),
+(10, 'Workshop Materials', 'Workshop materials have been uploaded', 0),
+(1, 'Refund Processed', 'Your refund has been processed successfully', 0),
+(5, 'Event Recommendation', 'Based on your interests, you might like this event', 0),
+(2, 'Speaker Announcement', 'New keynote speaker announced for conference', 0),
+(7, 'Art Exhibition Update', 'New artworks added to the exhibition', 0);
+
+-- Insert event programs/schedules
+INSERT INTO `programmeevenement` (`evenementId`, `titre`, `heureDebut`, `heureFin`) VALUES
+(1, 'Opening Act - Local Bands', '2024-07-15 18:00:00', '2024-07-15 19:00:00'),
+(1, 'Main Performance - Headliner', '2024-07-15 20:00:00', '2024-07-15 22:00:00'),
+(1, 'Encore and Finale', '2024-07-15 22:00:00', '2024-07-15 23:00:00'),
+(2, 'Registration and Coffee', '2024-09-20 09:00:00', '2024-09-20 09:30:00'),
+(2, 'Keynote Speech', '2024-09-20 09:30:00', '2024-09-20 10:30:00'),
+(2, 'Panel Discussion', '2024-09-20 11:00:00', '2024-09-20 12:00:00'),
+(2, 'Lunch Break', '2024-09-20 12:00:00', '2024-09-20 13:00:00'),
+(2, 'Workshop Sessions', '2024-09-20 13:00:00', '2024-09-20 16:00:00'),
+(2, 'Networking Reception', '2024-09-20 16:00:00', '2024-09-20 18:00:00'),
+(3, 'Team Warm-ups', '2024-12-01 18:00:00', '2024-12-01 19:00:00'),
+(3, 'National Anthem', '2024-12-01 19:15:00', '2024-12-01 19:20:00'),
+(3, 'Game Start - First Quarter', '2024-12-01 19:30:00', '2024-12-01 20:15:00'),
+(3, 'Halftime Show', '2024-12-01 20:45:00', '2024-12-01 21:00:00'),
+(3, 'Game Continuation', '2024-12-01 21:00:00', '2024-12-01 22:00:00');
+
+-- Insert ticket scans
+INSERT INTO `scanbillet` (`achatBilletId`, `proprietaireId`, `scanneurId`, `statutId`, `scanneLe`) VALUES
+(5, 8, 4, 1, '2024-07-15 18:30:00'),
+(5, 8, 4, 1, '2024-07-15 18:31:00'),
+(12, 5, 4, 1, '2024-09-20 09:15:00'),
+(13, 7, 4, 1, '2024-08-10 19:45:00'),
+(14, 8, 4, 1, '2024-08-10 19:46:00');
+
+-- Insert event statistics
+INSERT INTO `statevenement` (`evenementId`, `billetsVendus`, `revenu`) VALUES
+(1, 15, 2089.95),
+(2, 8, 1799.96),
+(3, 5, 1499.96),
+(4, 6, 899.96),
+(5, 4, 559.96);
+
+-- Insert user statistics
+INSERT INTO `statutilisateur` (`utilisateurId`, `evenementsParticipes`) VALUES
+(1, 3),
+(5, 4),
+(7, 3),
+(8, 3),
+(10, 2);
+
+-- Insert audit logs
+INSERT INTO `logaudit` (`utilisateurId`, `action`, `entite`, `entiteId`) VALUES
+(1, 'CREATE', 'EVENT', 1),
+(2, 'UPDATE', 'EVENT', 2),
+(3, 'DELETE', 'USER', 0),
+(4, 'SCAN', 'TICKET', 5),
+(5, 'PURCHASE', 'TICKET', 1),
+(6, 'UPDATE', 'PROFILE', 5),
+(7, 'MESSAGE', 'USER', 1),
+(8, 'PAYMENT', 'TICKET', 3),
+(9, 'CREATE', 'EVENT', 9),
+(10, 'UPDATE', 'EVENT', 10);
+
+-- Insert system logs
+INSERT INTO `logsysteme` (`niveau`, `message`, `meta`) VALUES
+('INFO', 'Server started successfully', '{&quot;port&quot;: 3000, &quot;env&quot;: &quot;development&quot;}'),
+('INFO', 'Database connection established', '{&quot;database&quot;: &quot;gestion_evenements&quot;}'),
+('WARNING', 'High memory usage detected', '{&quot;usage&quot;: &quot;85%&quot;, &quot;threshold&quot;: &quot;80%&quot;}'),
+('ERROR', 'Payment processing failed', '{&quot;payment_id&quot;: 15, &quot;error&quot;: &quot;Card declined&quot;}'),
+('INFO', 'Daily backup completed', '{&quot;backup_size&quot;: &quot;250MB&quot;, &quot;duration&quot;: &quot;45s&quot;}'),
+('WARNING', 'Rate limit exceeded', '{&quot;ip&quot;: &quot;192.168.1.100&quot;, &quot;endpoint&quot;: &quot;/api/events&quot;}'),
+('INFO', 'New user registered', '{&quot;user_id&quot;: 11, &quot;email&quot;: &quot;newuser@example.com&quot;}'),
+('ERROR', 'Database query timeout', '{&quot;query&quot;: &quot;SELECT * FROM events&quot;, &quot;timeout&quot;: &quot;30s&quot;}'),
+('INFO', 'Event statistics updated', '{&quot;event_id&quot;: 1, &quot;tickets_sold&quot;: 15}'),
+('WARNING', 'SSL certificate expiring soon', '{&quot;expiry_date&quot;: &quot;2024-03-15&quot;}');
+
+-- Insert ticket discounts
+INSERT INTO `reductionbillet` (`billetId`, `code`, `montant`, `expireLe`) VALUES
+(2, 'SUMMER20', 20.00, '2024-07-31 23:59:59'),
+(6, 'TECH10', 30.00, '2024-09-30 23:59:59'),
+(10, 'SPORTS15', 15.00, '2024-12-31 23:59:59'),
+(14, 'ARTS25', 12.50, '2024-08-31 23:59:59'),
+(18, 'FOOD5', 4.00, '2024-10-31 23:59:59');
+
+-- Insert refunds
+INSERT INTO `remboursement` (`paiementId`, `raison`, `montant`) VALUES
+(15, 'Event cancelled by organizer', 89.99),
+(6, 'Customer requested refund', 199.99);
+
+-- Insert campaigns
+INSERT INTO `campagne` (`nom`, `contenu`) VALUES
+('Summer Festival Promotion', 'Get 20% off on all summer festival tickets. Use code SUMMER20 at checkout.'),
+('Conference Early Bird', 'Register early for the tech conference and save 30%. Limited spots available.'),
+('Sports Season Pass', 'Buy tickets for 3 games and get the 4th game free. Limited time offer.'),
+('Art Exhibition Special', 'Students get 50% off on all art exhibition tickets this month.'),
+('Food Festival VIP', 'Upgrade to VIP package and get exclusive access to chef demonstrations.');
+</sql><current_tab id="0"/></tab_sql></sqlb_project>
